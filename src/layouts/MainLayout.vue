@@ -103,6 +103,7 @@
     }
     .siderMenu li{
         font-size: 12px;
+        color: #657180;
     }
 </style>
 <style>
@@ -111,6 +112,7 @@
     }
     .sider .ivu-menu-submenu-title{
         font-weight: bold;
+        color: #464c5b;
     }
     .sider .ivu-menu-item-selected{
         font-weight: bold;
