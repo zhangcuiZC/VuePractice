@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <h1>About {{ name }}</h1>
-        <Button type="primary">Primary</Button>
-        <ColorPicker v-model="color" />
-    </div>
+  <div>
+    <h1>About {{ name }}</h1>
+    <Button type="primary">Primary</Button>
+    <ColorPicker v-model="color" />
+  </div>
 </template>
 
 <script>
@@ -15,7 +15,6 @@ export default {
     ...mapState("about", ["name"]),
     color: {
       get() {
-        console.log(this.$store.state);
         return this.$store.state.about.color;
       },
       set(color) {

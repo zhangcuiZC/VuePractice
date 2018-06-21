@@ -1,21 +1,21 @@
 <template>
   <div class="header">
     <div class="logo">
-      <img src="../assets/logo.png">
+      <!-- <img src="../assets/logo.png"> -->
+      <Icon class="logoIcon" type="cube"></Icon>
+      <div class="logoBox">
+        <p class="logoTitle">数据分析平台</p>
+        <p class="logoText">Data Analysis Platform</p>
+      </div>
+
     </div>
     <div class="menu">
-      <Menu mode="horizontal" theme="light" active-name="1" class="headerMenu">
-        <MenuItem name="1">
-        <Icon type="ios-paper"></Icon>
-        内容管理
-        </MenuItem>
-        <MenuItem name="2">
-        <Icon type="ios-people"></Icon>
-        用户管理
-        </MenuItem>
-        <MenuItem name="4">
-        <Icon type="settings"></Icon>
-        综合设置
+      <Menu mode="horizontal" theme="light" :active-name="root" class="headerMenu">
+        <MenuItem v-for="item in headerMenuList" :name="item.name" :key="item.name">
+        <router-link :to="item.to">
+          <Icon :type="item.icon"></Icon>
+          {{item.title}}
+        </router-link>
         </MenuItem>
       </Menu>
     </div>
@@ -35,7 +35,7 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="less">
 .header {
   width: 100%;
   height: 70px;
@@ -51,6 +51,31 @@
   height: 100%;
   float: left;
   position: relative;
+  padding-left: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  .logoIcon {
+    color: #fff;
+    font-size: 40px;
+    margin-right: 10px;
+  }
+  .logoBox {
+    font-size: 12px;
+    display: inline-block;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .logoTitle {
+      font-size: 14px;
+    }
+    .logoText {
+      color: #fff;
+      display: inline-block;
+      font-weight: lighter;
+    }
+  }
 }
 img {
   position: absolute;
@@ -81,7 +106,7 @@ img {
   margin-right: 10px;
 }
 </style>
-<style>
+<style lang="less">
 .headerMenu {
   background: transparent;
   height: 71px;
@@ -95,6 +120,17 @@ img {
   color: #fff !important;
   border-color: #4fe3c1 !important;
 }
+.headerMenu .ivu-menu-item {
+  padding: 0;
+  width: 120px;
+  text-align: center;
+  a {
+    width: 100%;
+    color: #fff;
+    display: inline-block;
+    height: 100%;
+  }
+}
 </style>
 
 <script>
@@ -106,8 +142,15 @@ import {
   DropdownMenu,
   DropdownItem
 } from "iview";
+import headerMenuList from "../config/headerMenu.js";
 export default {
-  name: "Header",
-  components: { Menu, Icon, MenuItem, Dropdown, DropdownMenu, DropdownItem }
+  name: "MainHeader",
+  components: { Menu, Icon, MenuItem, Dropdown, DropdownMenu, DropdownItem },
+  data() {
+    return {
+      headerMenuList
+    };
+  },
+  props: ["root"]
 };
 </script>

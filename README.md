@@ -1,10 +1,20 @@
-# my-project
+# Vue-project template
 
-> A Vue.js project
+## 一个基于 vue+vue-router+vuex 的后台管理界面模板
+
+- 三级菜单：root/parent/child 分别对应顶部菜单/左侧主菜单/左侧子菜单
+- config 文件下定义顶部和左侧菜单及权限
+- router 中定义路由和权限（和 config 下权限一致）
+- 权限目前采用基于角色的权限控制
+
+### 备忘：
+
+1. 登录界面，404 界面未做
+2. 路由懒加载未处理
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 
@@ -17,5 +27,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
